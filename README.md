@@ -6,7 +6,7 @@ Tampa, FL, United States
 - https://mapzen.com/data/metro-extracts/metro/tampa_florida/
 
 ## Problems Encountered in the Map
-# City name inconsistencies
+### City name inconsistencies
 Use `audit.py` to clean city names:
 - Capitalization:
   - `spring hill -> Spring Hill`
@@ -28,7 +28,8 @@ Use `audit.py` to clean city names:
   - `Palm Harbor, Fl. -> Palm Harbor`
   - `Tampa  -> Tampa`
   - `Seminole  -> Seminole`
-# State inconsistencies
+### State inconsistencies
+Use `audit.py` to clean state names:
 The majority of the data have `FL` as the state in `addr:state`. Otherwise, 
 the state is listed as:
   - `Florida`: 24
@@ -38,3 +39,5 @@ the state is listed as:
   - `florida`: 1
   - `f`: 1
   - `FLq`: 1
+### Zip code inconsistencies
+  - There are a few inconsistent zip codes, all of which have a length longer than 5:
