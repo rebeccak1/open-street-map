@@ -5,6 +5,22 @@ Tampa, FL, United States
 
 - https://mapzen.com/data/metro-extracts/metro/tampa_florida/
 
+## Data Audit
+### Unique Tags
+Use `mapparser.py` to find the unique tags: 
+- `bounds`: 1
+- `member`: 31857
+- `nd`: 1957582
+- `node`: 1655566
+- `osm`: 1
+- `relation`: 1252
+- `tag`: 1131585
+- `way`: 182866
+### Patterns in the Tags
+- `lower`: 575997
+- `lower_colon`: 520908
+- `other`: 34675
+- `problemchars`: 5
 ## Problems Encountered in the Map
 ### City name inconsistencies
 Use `audit.py` to clean city names:
@@ -26,8 +42,8 @@ Use `audit.py` to clean city names:
   - `Land O Lakes, FL -> Land O' Lakes`
   - `Land O Lakes -> Land O' Lakes`
   - `Palm Harbor, Fl. -> Palm Harbor`
-  - `Tampa  -> Tampa`
-  - `Seminole  -> Seminole`
+  - `'Tampa  '-> Tampa`
+  - `'Seminole  '-> Seminole`
 ### State inconsistencies
 Use `audit.py` to clean state names:
 The majority of the data have `FL` as the state in `addr:state`. Otherwise, 
@@ -40,4 +56,6 @@ the state is listed as:
   - `f`: 1
   - `FLq`: 1
 ### Zip code inconsistencies
-  - There are a few inconsistent zip codes, all of which have a length longer than 5:
+  - There are a few inconsistent zip codes, all of which have a length longer than 5. For example:
+    - 33548:33556
+    - 34669; 34667; 34667
