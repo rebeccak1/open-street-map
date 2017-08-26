@@ -69,3 +69,65 @@ the state is listed as:
 - ways_nodes.csv: 44 MB
 - ways_tags.csv: 32 MB
 - tampa.db: 204 MB
+
+### Number of nodes
+1655566
+
+### Number of ways
+182866
+
+### Number of unique users
+1448
+
+### Top 10 contributing users
+- `coleman`: 258302
+- `woodpeck_fixbot`: 235013
+- `grouper`: 187215
+- `EdHillsman`: 106677
+- `NE2`: 72924
+- `David Hey`: 60918
+- `LnxNoob`: 58364
+- `KalininOV`: 48825
+- `westampa`: 42145
+- `bot-mode`: 37656
+
+### Number of users contributing once
+330
+
+### Top 10 amenities
+- `restaurant`: 852
+- `place_of_worship`: 771
+- `school`: 553
+- `fast_food`: 396
+- `bicycle_parking`: 353
+- `bench`: 279
+- `fuel`: 235
+- `fountain`: 201
+- `bank`: 170
+- `toilets`: 148
+
+### Top 5 places of worship
+- `christian`: 724
+- `jewish`: 4
+- `bahai`: 3
+- `buddhist`: 3
+- `unitarian_universalist`: 3
+
+### Top 5 cuisines
+- `american`: 93
+- `pizza`: 70
+- `mexican`: 41
+- `italian`: 28
+- `seafood`: 25
+
+### Top 10 restaurants
+- `Tijuana Flats`: 8
+- `Applebee's`: 6
+- `Bob Evans`: 6
+- `Denny's`: 6
+- `IHOP`: 6
+- `Outback Steakhouse`: 6
+- `Panera Bread`: 6
+- `Chili's`: 5
+- `Golden Corral`: 5
+- `Pizza Hut`: 5
