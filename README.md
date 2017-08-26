@@ -7,7 +7,7 @@ Tampa, FL, United States
 
 ## Data Audit
 ### Unique Tags
-Use `mapparser.py` to find the unique tags: 
+Use `mapparser.py` to count the unique tags: 
 - `bounds`: 1
 - `member`: 31857
 - `nd`: 1957582
@@ -18,14 +18,16 @@ Use `mapparser.py` to find the unique tags:
 - `way`: 182866
 
 ### Patterns in the Tags
-- `lower`: 575997
-- `lower_colon`: 520908
-- `other`: 34675
-- `problemchars`: 5
+Use `tags.py` to find these patterns in the tags:
+- `lower`: 575997. These are valid tags that only have lowercase letters.
+- `lower_colon`: 520908. These are tags with a colon, that are valid otherwise.
+- `other`: 34675. These are tags that are not in any of the other categories.
+- `problemchars`: 5. These are tags that have problematic characters.
 
 ## Problems Encountered in the Map
+Use `audit.py` to check and clean for inconsistencies in city, street, and zip codes.
+
 ### City name inconsistencies
-Use `audit.py` to clean city names:
 - Capitalization:
   - `spring hill -> Spring Hill`
   - `SPRING HILL -> Spring Hill`
@@ -192,3 +194,29 @@ the state is listed as:
 - `Chili's`: 5
 - `Golden Corral`: 5
 - `Pizza Hut`: 5
+
+## Other Ideas
+### Further fix the errors encountered in the street names
+- Mostly due to US Highway names that have numbers.
+
+### Validate zip codes
+- A few states were listed as `GA`. The addresses that had these listed should be verified with external data to see 
+if GA is a typo and the address is indeed in FL, or if the address is in GA and is included in the dataset by mistake.
+- Validate the zip code fields that have multiple zip codes listed with semicolons.
+
+### Check consistency of other data fields
+- Like phone numbers
+
+## Files
+All of the analysis is done with the `osm.ipynb` file. The cells were exported in python scripts as:
+- `audit.py`: audit street names, city names, and zip codes
+- `data.py`: from OSM file, create CSV file
+- `database.py`: from CSV file, create SQL database
+- `mapparser.py`: count unique tags
+- `query.py`: SQL queries used
+- `sample.py`: extract 25 MB sample of the OSM file
+- `users.py`: get contributing users
+- `tags.py`: count patterns in the tags
+
+## References
+- https://gist.github.com/carlward/54ec1c91b62a5f911c42#file-sample_project-md
