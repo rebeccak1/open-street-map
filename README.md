@@ -44,6 +44,44 @@ Use `audit.py` to clean city names:
   - `Palm Harbor, Fl. -> Palm Harbor`
   - `'Tampa  '-> Tampa`
   - `'Seminole  '-> Seminole`
+  
+### Street name inconsistencies
+Some streets are listed with more information than the street address. For example:
+- `8492 Manatee Bay Dr Tampa, FL 33635`
+- `6010 US-301, Ellenton, FL 34222, Vereinigte Staaten`
+To fix these I search all street names for commas, and remove everything after and including the comma.
+
+Some streets have a `#` symbol in their name, for example:
+- `Starkey Rd #G`
+- `E Fletcher Ave #131`
+To fix these, I search all street names for the # symbol, and remove everything after and following the #.
+
+Some streets have abbreviated directions. For example:
+- `E -> East`
+- `NW -> Northwest`
+Additionally, sometimes the direction is listed at the end of the street, rather than at the beginning. For example:
+- `37th Ave Northeast`
+- `77th Drive West`
+- `San Martin Blvd NE`
+To fix these, I search all street names for directions, and if there is a direction at the end of the street name I move
+it to the front, and I also convert all abbreviated directions to the full direction.
+
+Some street names have `Suite` in the name. For example:
+- `66th Street North Suite 135`
+- `W Cypress St Suite`
+To fix these, I search all street names for `Suite`, and remove everything after and including the `Suite`.
+
+Finally, there are some street types that are not in the expected street names list. These include:
+- `Passage`
+- `Cutoff`
+- `Bridge`
+- `Crossing`
+- `Lane`
+- `Way`
+- `Run`
+- `Loop`
+- `Place`
+
 ### State inconsistencies
 Use `audit.py` to clean state names:
 The majority of the data have `FL` as the state in `addr:state`. Otherwise, 
