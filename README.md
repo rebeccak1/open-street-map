@@ -5,6 +5,8 @@ Tampa, FL, United States
 
 - https://mapzen.com/data/metro-extracts/metro/tampa_florida/
 
+I chose this area, because I am unfamiliar with it, and wanted to see what the data for this area looked like.
+
 ## Data Audit
 ### Unique Tags
 Use `mapparser.py` to count the unique tags: 
