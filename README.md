@@ -59,3 +59,13 @@ the state is listed as:
   - There are a few inconsistent zip codes, all of which have a length longer than 5. For example:
     - 33548:33556
     - 34669; 34667; 34667
+    
+## Data Overview
+### File sizes
+- tampa_florida.osm: 355 MB
+- nodes_csv: 131 MB
+- nodes_tags.csv: 6.5 MB
+- ways.csv: 11 MB
+- ways_nodes.csv: 44 MB
+- ways_tags.csv: 32 MB
+- tampa.db: 204 MB
