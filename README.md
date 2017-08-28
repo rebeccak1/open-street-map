@@ -7,8 +7,7 @@ Tampa, FL, United States
 
 
 
-![GitHub Logo](tampa.png)
-Format: ![Alt Text](url)
+![Data location](tampa.png)
 
 I chose this area, because I am unfamiliar with it, and wanted to see what the data for this area looked like.
 
