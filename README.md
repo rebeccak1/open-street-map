@@ -203,15 +203,41 @@ the state is listed as:
 
 ## Other Ideas
 ### Further fix the errors encountered in the street names
-- Mostly due to US Highway names that have numbers.
+The street names that are now considered inconsistent are mostly due to US Highway names 
+that have numbers. Therefore, streets that are US Highways should be taken into account when deciding
+whether or not a street name is consistent.
+#### Benefits
+- The dataset is further cleaned
+#### Anticipated Issues
+- Need to make sure that a street that has the format of a highway name (ends in a number) is actually
+a highway, and is not a mistake/typo in the street name.
 
 ### Validate zip codes
-- A few states were listed as `GA`. The addresses that had these listed should be verified with external data to see 
+A few states were listed as `GA`. The addresses that had these listed should be verified with external data to see 
 if GA is a typo and the address is indeed in FL, or if the address is in GA and is included in the dataset by mistake.
-- Validate the zip code fields that have multiple zip codes listed with semicolons.
+The zip code fields that have multiple zip codes listed with semicolons also need to be validated. The
+data can be validated with external data sources, such as Google Maps.
+#### Benefits
+- Improvement in accuracy for data queries.
+#### Anticipated Issues
+- The external database could have incorrect info.
+- The external database could be missing the needed information.
+- Need users to perform the cleaning.
 
 ### Check consistency of other data fields
-- Like phone numbers
+The consistency of other fields, like phone numbers, also needs to be checked. As with the zip codes,
+this can be done by cross-referencing an external data source, and has the same benefits and anticipated
+issues.
+
+### Ensure new data is consistent
+As this analysis has shown, this dataset is not without errors. Instead of cleaning the dataset after
+data has been entered, I think a better way would be to have a more structured way for users to input
+data. For example, the user could only select a zip code from zip codes that were validated to be in the area.
+#### Benefits
+- Less cleaning of data set needed
+#### Anticipated Issues
+- Need users who are dedicated to implementing the solution
+- Initially it would require a lot of time to implement and validate the structured input form
 
 ## Files
 All of the analysis is done with the `osm.ipynb` file. The cells were exported in python scripts as:
