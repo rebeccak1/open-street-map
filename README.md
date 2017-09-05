@@ -236,8 +236,20 @@ data. For example, the user could only select a zip code from zip codes that wer
 #### Benefits
 - Less cleaning of data set needed
 #### Anticipated Issues
-- Need users who are dedicated to implementing the solution
+- Need users who are dedicated to implementing the solution, could implement gamification to encourage users
 - Initially it would require a lot of time to implement and validate the structured input form
+
+### Add more data for restuarant delivery
+From querying the dataset, there are 852 restaurants, of which 91 have information on delivery.
+72 have no delivery and 19 do provide delivery. I think that people using the database
+would be interested in whether or not a restaurant provides delivery, so the database
+could be improved by adding delivery information for more restaurants.
+#### Benefits
+- Enhanced user experience
+#### Anticipated Issues
+- Need people to find delivery information
+- Requires time to implement
+- Need to find external data source, perhaps Yelp data
 
 ## Files
 All of the analysis is done with the `osm.ipynb` file. The cells were exported in python scripts as:
