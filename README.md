@@ -276,8 +276,20 @@ data. For example, the user could only select a zip code from zip codes that wer
 - Initially it would require a lot of time to implement and validate the structured input form
 
 ### Add more data for restuarant delivery
-From querying the dataset, there are 852 restaurants, of which 91 have information on delivery.
-72 have no delivery and 19 do provide delivery. I think that people using the database
+From querying the dataset, there are 852 restaurants:
+```sql
+SELECT value, count(*) FROM nodes_tags
+WHERE value="restaurant"
+```
+91 of these restaurants have information on delivery, with 72 having no delivery and 19 providing delivery:
+```sql
+SELECT value, count(*)
+FROM nodes_tags JOIN (SELECT DISTINCT(id) FROM nodes_tags WHERE value="restaurant")
+ON nodes_tags.id=i.id
+WHERE key="delivery"
+GROUP BY value
+```
+I think that people using the database
 would be interested in whether or not a restaurant provides delivery, so the database
 could be improved by adding delivery information for more restaurants.
 #### Benefits
