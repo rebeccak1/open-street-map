@@ -5,8 +5,6 @@ Tampa, FL, United States
 
 - https://mapzen.com/data/metro-extracts/metro/tampa_florida/
 
-
-
 ![Data location](tampa.png)
 
 I chose this area, because I am unfamiliar with it, and wanted to see what the data for this area looked like.
@@ -31,46 +29,57 @@ Use `tags.py` to find these patterns in the tags:
 --->
 
 ## Problems Encountered in the Map
-Use `audit.py` to check and clean for inconsistencies in city, street, and zip codes.
+Use `audit.py` to check and clean for inconsistencies in city, street, and zip codes. Here are some examples
+of problems found:
 
 ### City name inconsistencies
 - Capitalization:
-  - `spring hill -> Spring Hill`
   - `SPRING HILL -> Spring Hill`
   - `port richey -> Port Richey`
+  
+<!---
+  - `spring hill -> Spring Hill`
   - `lutz -> Lutz`
   - `tampa -> Tampa`
+--->
 - Spelling
   - `Clearwarer Beach -> Clearwater Beach`
   - `St Petersbug -> St. Petersburg`
+<!---
   - `Zephyhills -> Zephyrhills`
   - `Miakka -> Old Myakka`
+--->
 - Punctuation
+  - `Palm Harbor, Fl. -> Palm Harbor`
+  - `Land O Lakes -> Land O' Lakes`
+<!---
   - `St. Petersburg, FL -> St. Petersburg`
   - `St Pete Beach -> St. Pete Beach`
   - `Saint Petersburg -> St. Petersburg`
   - `Land O Lakes, FL -> Land O' Lakes`
-  - `Land O Lakes -> Land O' Lakes`
-  - `Palm Harbor, Fl. -> Palm Harbor`
   - `'Tampa  '-> Tampa`
   - `'Seminole  '-> Seminole`
-  
+--->  
 ### Street name inconsistencies
 Some streets are listed with more information than the street address. For example:
-- `8492 Manatee Bay Dr Tampa, FL 33635`
-- `6010 US-301, Ellenton, FL 34222, Vereinigte Staaten`
-
+```
+- 8492 Manatee Bay Dr Tampa, FL 33635
+- 6010 US-301, Ellenton, FL 34222, Vereinigte Staaten
+```
 To fix these I search all street names for commas, and remove everything after and including the comma.
 
 Some streets have a `#` symbol in their name, for example:
-- `Starkey Rd #G`
-- `E Fletcher Ave #131`
-
+```
+- Starkey Rd #G
+- E Fletcher Ave #131
+```
 To fix these, I search all street names for the # symbol, and remove everything after and following the #.
 
 Some streets have abbreviated directions. For example:
-- `E -> East`
-- `NW -> Northwest`
+```
+- E -> East
+- NW -> Northwest
+```
 
 Additionally, sometimes the direction is listed at the end of the street, rather than at the beginning. For example:
 - `37th Ave Northeast`
@@ -86,7 +95,7 @@ Some street names have `Suite` in the name. For example:
 
 To fix these, I search all street names for `Suite`, and remove everything after and including the `Suite`.
 
-Finally, there are some street types that are not in the expected street names list. These include:
+<!--- Finally, there are some street types that are not in the expected street names list. These include:
 - `Passage`
 - `Cutoff`
 - `Bridge`
@@ -104,25 +113,29 @@ Finally, there are some street types that are not in the expected street names l
 - `Trail`
 - `Parkway`
 - `Commons`
+--->
 
 After these fixes, there are still a few inconsistent street names. These are streets 
 that are mostly US Highways, such as
-- `State Road 52`
-- `SR 52`
-- `FL 52`
-- `U.S. 19`
-- `US-301`
+```
+- State Road 52
+- SR 52
+- FL 52
+- U.S. 19
+- US-301
+```
 ### State inconsistencies
 Use `audit.py` to clean state names:
 The majority of the data have `FL` as the state in `addr:state`. Otherwise, 
 the state is listed as:
-  - `Florida`: 24
-  - `GA`: 3
-  - `Fl`: 3
-  - `fl`: 16
-  - `florida`: 1
-  - `f`: 1
-  - `FLq`: 1
+```sql
+ Florida 24
+ GA      3
+ Fl      3
+ fl      16
+ florida 1
+ FLq     1
+```
 
 ### Zip code inconsistencies
   - There are a few inconsistent zip codes, all of which have a length longer than 5. For example:
