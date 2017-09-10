@@ -11,24 +11,24 @@ Tampa, FL, United States
 
 I chose this area, because I am unfamiliar with it, and wanted to see what the data for this area looked like.
 
-## Data Audit
+<!---  ## Data Audit
 ### Unique Tags
 Use `mapparser.py` to count the unique tags: 
 - `bounds`: 1
-- `member`: 31857
+ `member`: 31857
 - `nd`: 1957582
-- `node`: 1655566
-- `osm`: 1
-- `relation`: 1252
-- `tag`: 1131585
-- `way`: 182866
-
+# - `node`: 1655566
+# - `osm`: 1
+# - `relation`: 1252
+# - `tag`: 1131585
+# - `way`: 182866
 ### Patterns in the Tags
 Use `tags.py` to find these patterns in the tags:
 - `lower`: 575997. These are valid tags that only have lowercase letters.
 - `lower_colon`: 520908. These are tags with a colon, that are valid otherwise.
 - `other`: 34675. These are tags that are not in any of the other categories.
 - `problemchars`: 5. These are tags that have problematic characters.
+--->
 
 ## Problems Encountered in the Map
 Use `audit.py` to check and clean for inconsistencies in city, street, and zip codes.
@@ -126,80 +126,90 @@ the state is listed as:
 
 ### Zip code inconsistencies
   - There are a few inconsistent zip codes, all of which have a length longer than 5. For example:
-    - 33548:33556
-    - 34669; 34667; 34667
+    - `33548:33556`
+    - `34669; 34667; 34667`
     
 ## Data Overview
 ### File sizes
-- tampa_florida.osm: 355 MB
-- nodes_csv: 131 MB
-- nodes_tags.csv: 6.5 MB
-- ways.csv: 11 MB
-- ways_nodes.csv: 44 MB
-- ways_tags.csv: 32 MB
-- tampa.db: 204 MB
+- `tampa_florida.osm: 355 MB`
+- `nodes_csv: 131 MB`
+- `nodes_tags.csv: 6.5 MB`
+- `ways.csv: 11 MB`
+- `ways_nodes.csv: 44 MB`
+- `ways_tags.csv: 32 MB`
+- `tampa.db: 204 MB`
 
 ### Number of nodes
-1655566
+`1655566`
 
 ### Number of ways
-182866
+`182866`
 
 ### Number of unique users
-1448
+`1448`
 
 ### Top 10 contributing users
-- `coleman`: 258302
-- `woodpeck_fixbot`: 235013
-- `grouper`: 187215
-- `EdHillsman`: 106677
-- `NE2`: 72924
-- `David Hey`: 60918
-- `LnxNoob`: 58364
-- `KalininOV`: 48825
-- `westampa`: 42145
-- `bot-mode`: 37656
+```
+- coleman: 258302
+- woodpeck_fixbot: 235013
+- grouper: 187215
+- EdHillsman: 106677
+- NE2: 72924
+- David Hey: 60918
+- LnxNoob: 58364
+- KalininOV: 48825
+- westampa: 42145
+- bot-mode: 37656
+```
 
 ### Number of users contributing once
-330
+`330`
 
 ### Top 10 amenities
-- `restaurant`: 852
-- `place_of_worship`: 771
-- `school`: 553
-- `fast_food`: 396
-- `bicycle_parking`: 353
-- `bench`: 279
-- `fuel`: 235
-- `fountain`: 201
-- `bank`: 170
-- `toilets`: 148
+```
+- restaurant: 852
+- place_of_worship: 771
+- school: 553
+- fast_food: 396
+- bicycle_parking: 353
+- bench: 279
+- fuel: 235
+- fountain: 201
+- bank: 170
+- toilets: 148
+```
 
 ### Top 5 places of worship
-- `christian`: 724
-- `jewish`: 4
-- `bahai`: 3
-- `buddhist`: 3
-- `unitarian_universalist`: 3
+```
+- christian: 724
+- jewish: 4
+- bahai: 3
+- buddhist: 3
+- unitarian_universalist: 3
+```
 
 ### Top 5 cuisines
-- `american`: 93
-- `pizza`: 70
-- `mexican`: 41
-- `italian`: 28
-- `seafood`: 25
+```
+- american: 93
+- pizza: 70
+- mexican: 41
+- italian: 28
+- seafood: 25
+```
 
 ### Top 10 restaurants
-- `Tijuana Flats`: 8
-- `Applebee's`: 6
-- `Bob Evans`: 6
-- `Denny's`: 6
-- `IHOP`: 6
-- `Outback Steakhouse`: 6
-- `Panera Bread`: 6
-- `Chili's`: 5
-- `Golden Corral`: 5
-- `Pizza Hut`: 5
+```
+- Tijuana Flats: 8
+- Applebee's: 6
+- Bob Evans: 6
+- Denny's: 6
+- IHOP: 6
+- Outback Steakhouse: 6
+- Panera Bread: 6
+- Chili's: 5
+- Golden Corral: 5
+- Pizza Hut: 5
+```
 
 ## Other Ideas
 ### Further fix the errors encountered in the street names
