@@ -34,8 +34,10 @@ of problems found:
 
 ### City name inconsistencies
 - Capitalization:
-  - `SPRING HILL -> Spring Hill`
-  - `port richey -> Port Richey`
+```
+  - SPRING HILL -> Spring Hill
+  - port richey -> Port Richey
+  ```
   
 <!---
   - `spring hill -> Spring Hill`
@@ -43,8 +45,10 @@ of problems found:
   - `tampa -> Tampa`
 --->
 - Spelling
-  - `Clearwarer Beach -> Clearwater Beach`
-  - `St Petersbug -> St. Petersburg`
+```
+  - Clearwarer Beach -> Clearwater Beach
+  - St Petersbug -> St. Petersburg
+  ```
 <!---
   - `Zephyhills -> Zephyrhills`
   - `Miakka -> Old Myakka`
@@ -82,9 +86,11 @@ Some streets have abbreviated directions. For example:
 ```
 
 Additionally, sometimes the direction is listed at the end of the street, rather than at the beginning. For example:
-- `37th Ave Northeast`
-- `77th Drive West`
-- `San Martin Blvd NE`
+```
+- 37th Ave Northeast
+- 77th Drive West
+- San Martin Blvd NE
+```
 
 <!--- 
 To fix these, I search all street names for directions, and if there is a direction at the end of the street name I move
@@ -92,8 +98,10 @@ it to the front, and I also convert all abbreviated directions to the full direc
 --->
 
 Some street names have `Suite` in the name. For example:
-- `66th Street North Suite 135`
-- `W Cypress St Suite`
+```
+- 66th Street North Suite 135
+- W Cypress St Suite
+```
 
 <!--- To fix these, I search all street names for `Suite`, and remove everything after and including the `Suite`.
 Finally, there are some street types that are not in the expected street names list. These include:
@@ -139,9 +147,11 @@ the state is listed as:
 ```
 
 ### Zip code inconsistencies
-  - There are a few inconsistent zip codes, all of which have a length longer than 5. For example:
-    - `33548:33556`
-    - `34669; 34667; 34667`
+There are a few inconsistent zip codes, all of which have a length longer than 5. For example:
+```
+ - 33548:33556
+ - 34669; 34667; 34667
+```
     
 ## Data Overview
 ### File sizes
