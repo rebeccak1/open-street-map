@@ -66,15 +66,15 @@ Some streets are listed with more information than the street address. For examp
 - 8492 Manatee Bay Dr Tampa, FL 33635
 - 6010 US-301, Ellenton, FL 34222, Vereinigte Staaten
 ```
-To fix these I search all street names for commas, and remove everything after and including the comma.
-
+<!--- To fix these I search all street names for commas, and remove everything after and including the comma.
+--->
 Some streets have a `#` symbol in their name, for example:
 ```
 - Starkey Rd #G
 - E Fletcher Ave #131
 ```
-To fix these, I search all street names for the # symbol, and remove everything after and following the #.
-
+<!--- To fix these, I search all street names for the # symbol, and remove everything after and following the #.
+--->
 Some streets have abbreviated directions. For example:
 ```
 - E -> East
@@ -86,16 +86,17 @@ Additionally, sometimes the direction is listed at the end of the street, rather
 - `77th Drive West`
 - `San Martin Blvd NE`
 
+<!--- 
 To fix these, I search all street names for directions, and if there is a direction at the end of the street name I move
 it to the front, and I also convert all abbreviated directions to the full direction.
+--->
 
 Some street names have `Suite` in the name. For example:
 - `66th Street North Suite 135`
 - `W Cypress St Suite`
 
-To fix these, I search all street names for `Suite`, and remove everything after and including the `Suite`.
-
-<!--- Finally, there are some street types that are not in the expected street names list. These include:
+<!--- To fix these, I search all street names for `Suite`, and remove everything after and including the `Suite`.
+Finally, there are some street types that are not in the expected street names list. These include:
 - `Passage`
 - `Cutoff`
 - `Bridge`
@@ -144,13 +145,15 @@ the state is listed as:
     
 ## Data Overview
 ### File sizes
-- `tampa_florida.osm: 355 MB`
-- `nodes_csv: 131 MB`
-- `nodes_tags.csv: 6.5 MB`
-- `ways.csv: 11 MB`
-- `ways_nodes.csv: 44 MB`
-- `ways_tags.csv: 32 MB`
-- `tampa.db: 204 MB`
+```
+tampa_florida.osm.... 355 MB
+nodes_csv............ 131 MB
+nodes_tags.csv....... 6.5 MB
+ways.csv............. 11 MB
+ways_nodes.csv....... 44 MB
+ways_tags.csv........ 32 MB
+tampa.db............. 204 MB
+```
 
 ### Number of nodes
 `1655566`
@@ -162,66 +165,66 @@ the state is listed as:
 `1448`
 
 ### Top 10 contributing users
-```
-- coleman: 258302
-- woodpeck_fixbot: 235013
-- grouper: 187215
-- EdHillsman: 106677
-- NE2: 72924
-- David Hey: 60918
-- LnxNoob: 58364
-- KalininOV: 48825
-- westampa: 42145
-- bot-mode: 37656
+```sql
+coleman          258302
+woodpeck_fixbot  235013
+grouper          187215
+EdHillsman       106677
+NE2              72924
+David Hey        60918
+LnxNoob          58364
+KalininOV        48825
+westampa         42145
+bot-mode         37656
 ```
 
 ### Number of users contributing once
 `330`
 
 ### Top 10 amenities
-```
-- restaurant: 852
-- place_of_worship: 771
-- school: 553
-- fast_food: 396
-- bicycle_parking: 353
-- bench: 279
-- fuel: 235
-- fountain: 201
-- bank: 170
-- toilets: 148
+```sql
+restaurant        852
+place_of_worship  771
+school            553
+fast_food         396
+bicycle_parking   353
+bench             279
+fuel              235
+fountain          201
+bank              170
+toilets           148
 ```
 
 ### Top 5 places of worship
-```
-- christian: 724
-- jewish: 4
-- bahai: 3
-- buddhist: 3
-- unitarian_universalist: 3
+```sql
+christian  724
+jewish     4
+bahai      3
+buddhist   3
+unitarian_universalist 3
 ```
 
 ### Top 5 cuisines
-```
-- american: 93
-- pizza: 70
-- mexican: 41
-- italian: 28
-- seafood: 25
+```sql
+american 93
+pizza    70
+mexican  41
+italian  28
+seafood  25
 ```
 
 ### Top 10 restaurants
-```
-- Tijuana Flats: 8
-- Applebee's: 6
-- Bob Evans: 6
-- Denny's: 6
-- IHOP: 6
-- Outback Steakhouse: 6
-- Panera Bread: 6
-- Chili's: 5
-- Golden Corral: 5
-- Pizza Hut: 5
+```sql
+Tijuana Flats      8
+Applebee's         6
+Bob Evans          6
+Denny's            6
+IHOP               6
+Outback Steakhouse 6
+Panera Bread       6
+Chili's            5
+Golden Corral      5
+Pizza Hut          5
 ```
 
 ## Other Ideas
@@ -276,14 +279,16 @@ could be improved by adding delivery information for more restaurants.
 
 ## Files
 All of the analysis is done with the `osm.ipynb` file. The cells were exported in python scripts as:
-- `audit.py`: audit street names, city names, and zip codes
-- `data.py`: from OSM file, create CSV file
-- `database.py`: from CSV file, create SQL database
-- `mapparser.py`: count unique tags
-- `query.py`: SQL queries used
-- `sample.py`: extract 25 MB sample of the OSM file
-- `users.py`: get contributing users
-- `tags.py`: count patterns in the tags
+```
+- audit.py: audit street names, city names, and zip codes
+- data.py: from OSM file, create CSV file
+- database.py: from CSV file, create SQL database
+- mapparser.py: count unique tags
+- query.py: SQL queries used
+- sample.py: extract 25 MB sample of the OSM file
+- users.py: get contributing users
+- tags.py: count patterns in the tags
+```
 
 ## References
 - https://gist.github.com/carlward/54ec1c91b62a5f911c42#file-sample_project-md
