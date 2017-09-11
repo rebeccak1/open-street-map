@@ -1,7 +1,12 @@
+'''
+Creates the database by reading in the CSV files from data.py
+'''
+
+
 import csv
 import sqlite3
 
-conn = sqlite3.connect('tampa2.db')
+conn = sqlite3.connect('tampa.db')
 conn.text_factory = str
 cur = conn.cursor()
 

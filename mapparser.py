@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+import xml.etree.ElementTree as ET
+
+"""
+Process the map file with iterative parsing to find what kinds of 
+tags there are and how many. Outputs a dictionary where the keys
+are the tag names and the values are how many times the tag is in
+the map.
+"""
 
 def count_tags(filename):
     tag_count = {}

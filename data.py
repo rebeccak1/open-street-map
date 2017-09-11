@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import audit
 
 """
 After auditing is complete the next step is to prepare the data to be inserted into a SQL database.
@@ -184,6 +185,19 @@ WAY_FIELDS = ['id', 'user', 'uid', 'version', 'changeset', 'timestamp']
 WAY_TAGS_FIELDS = ['id', 'key', 'value', 'type']
 WAY_NODES_FIELDS = ['id', 'node_id', 'position']
 
+def clean_tag(tag):
+    #print "tag {}".format(tag.attrib['k'])
+    if audit.is_street_name(tag):
+        print "street name"
+        tag.attrib['v'] = audit.clean_street(tag.attrib['v'])
+    elif audit.is_state(tag):
+        print 'state'
+        tag.attrib['v'] = audit.clean_state(tag.attrib['v'])
+    elif audit.is_city(tag):
+        print 'city'
+        tag.attrib['v'] = audit.clean_city(tag.attrib['v'])
+    return tag.attrib['v']
+
 
 def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIELDS,
                   problem_chars=PROBLEMCHARS, default_tag_type='regular'):
@@ -192,19 +206,21 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
     node_attribs = {}
     way_attribs = {}
     way_nodes = []
-    tags = []  # Handle secondary tags the same way for both node and way elements
-
+    tags = []  # Handle secondary tags the same way for both node and way elements    
+    
     if element.tag == 'node':
         for attrib in element.attrib:
             if attrib in NODE_FIELDS:
                 node_attribs[attrib] = element.attrib[attrib]
+
         for child in element:
             node_tag = {}
+            new_v = clean_tag(child)
             if LOWER_COLON.match(child.attrib['k']):
                 node_tag['type'] = child.attrib['k'].split(':',1)[0]
                 node_tag['key'] = child.attrib['k'].split(':',1)[1]
                 node_tag['id'] = element.attrib['id']
-                node_tag['value'] = child.attrib['v']
+                node_tag['value'] = new_v #child.attrib['v']
                 tags.append(node_tag)
             elif PROBLEMCHARS.match(child.attrib['k']):
                 continue
@@ -212,7 +228,7 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
                 node_tag['type'] = 'regular'
                 node_tag['key'] = child.attrib['k']
                 node_tag['id'] = element.attrib['id']
-                node_tag['value'] = child.attrib['v']
+                node_tag['value'] = new_v #child.attrib['v']
                 tags.append(node_tag)
         
         return {'node': node_attribs, 'node_tags': tags}
@@ -221,18 +237,19 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
         for attrib in element.attrib:
             if attrib in WAY_FIELDS:
                 way_attribs[attrib] = element.attrib[attrib]
-        
+        print element.attrib
         position = 0
         for child in element:
             way_tag = {}
             way_node = {}
-            
+            print child
             if child.tag == 'tag':
+                new_v = clean_tag(child)
                 if LOWER_COLON.match(child.attrib['k']):
                     way_tag['type'] = child.attrib['k'].split(':',1)[0]
                     way_tag['key'] = child.attrib['k'].split(':',1)[1]
                     way_tag['id'] = element.attrib['id']
-                    way_tag['value'] = child.attrib['v']
+                    way_tag['value'] = new_v #child.attrib['v']
                     tags.append(way_tag)
                 elif PROBLEMCHARS.match(child.attrib['k']):
                     continue
@@ -240,7 +257,7 @@ def shape_element(element, node_attr_fields=NODE_FIELDS, way_attr_fields=WAY_FIE
                     way_tag['type'] = 'regular'
                     way_tag['key'] = child.attrib['k']
                     way_tag['id'] = element.attrib['id']
-                    way_tag['value'] = child.attrib['v']
+                    way_tag['value'] = new_v #child.attrib['v']
                     tags.append(way_tag)
                     
             elif child.tag == 'nd':

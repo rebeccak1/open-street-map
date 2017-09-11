@@ -1,15 +1,18 @@
+'''
+The queries used in the project.
+'''
 
 print "Number of nodes:"
-cur.execute('SELECT COUNT(*) FROM nodes').fetchone()[0]
+print cur.execute('SELECT COUNT(*) FROM nodes').fetchone()[0]
 
-print "Number of ways:"
-cur.execute('SELECT COUNT(*) FROM ways').fetchone()[0]
+print "\nNumber of ways:"
+print cur.execute('SELECT COUNT(*) FROM ways').fetchone()[0]
 
-print "Number of unique users:"
-cur.execute('SELECT COUNT(DISTINCT(e.uid)) \
+print "\nNumber of unique users:"
+print cur.execute('SELECT COUNT(DISTINCT(e.uid)) \
             FROM (SELECT uid FROM nodes UNION ALL SELECT uid FROM ways) e').fetchone()[0]
 
-print "Top 10 contributing users:"
+print "\nTop 10 contributing users:"
 users = []
 for row in cur.execute('SELECT e.user, COUNT(*) as num \
             FROM (SELECT user FROM nodes UNION ALL SELECT user FROM ways) e \
@@ -19,14 +22,14 @@ for row in cur.execute('SELECT e.user, COUNT(*) as num \
     users.append(row)
 print users
 
-print "Number of users contributing once:"
+print "\nNumber of users contributing once:"
 cur.execute('SELECT COUNT(*) FROM \
                 (SELECT e.user, COUNT(*) as num \
                  FROM (SELECT user FROM nodes UNION ALL SELECT user FROM ways) e \
                  GROUP BY e.user \
-                 HAVING num=1) u').fetchone()[0]
+                 HAVING num=1) u').fetchone()
 
-print "Top 10 amenities:"
+print "\nTop 10 amenities:"
 amenities = []
 for row in cur.execute('SELECT value, COUNT(*) as num \
             FROM nodes_tags \
@@ -37,7 +40,7 @@ for row in cur.execute('SELECT value, COUNT(*) as num \
     amenities.append(row)
 print amenities
 
-print "Top 5 places of worship:"
+print "\nTop 5 places of worship:"
 religions = []
 for row in cur.execute('SELECT nodes_tags.value, COUNT(*) as num \
             FROM nodes_tags \
@@ -50,7 +53,7 @@ for row in cur.execute('SELECT nodes_tags.value, COUNT(*) as num \
     religions.append(row)
 print religions
 
-print "Top 5 cuisines"
+print "\nTop 5 cuisines"
 cuisines = []
 for row in cur.execute('SELECT nodes_tags.value, COUNT(*) as num \
             FROM nodes_tags \
@@ -63,7 +66,7 @@ for row in cur.execute('SELECT nodes_tags.value, COUNT(*) as num \
     cuisines.append(row)
 print cuisines
 
-print "Top 10 restaurants:"
+print "\nTop 10 restaurants:"
 restaurants = []
 for row in cur.execute('SELECT value, COUNT(*) as num \
             FROM nodes_tags \
