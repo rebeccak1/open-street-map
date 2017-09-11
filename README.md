@@ -166,15 +166,28 @@ tampa.db............. 204 MB
 ```
 
 ### Number of nodes
-`1655566`
+```sql
+SELECT COUNT(*) FROM nodes: 1655566
+```
 
 ### Number of ways
-`182866`
+```sql
+SELECT COUNT(*) FROM ways: 182866
+```
 
 ### Number of unique users
-`1448`
+```sql
+SELECT COUNT(DISTINCT(e.uid))
+FROM (SELECT uid FROM nodes UNION ALL SELECT uid FROM ways) e: 1448
+```
 
 ### Top 10 contributing users
+```sql
+SELECT e.user, COUNT(*) as num FROM (SELECT user FROM nodes UNION ALL SELECT user FROM ways) e 
+GROUP BY e.user
+ORDER BY num DESC
+LIMIT 10
+```
 ```sql
 coleman          258302
 woodpeck_fixbot  235013
@@ -189,9 +202,20 @@ bot-mode         37656
 ```
 
 ### Number of users contributing once
-`330`
+```sql
+SELECT COUNT(*) FROM (SELECT e.user, COUNT(*) as num 
+FROM (SELECT user FROM nodes UNION ALL SELECT user FROM ways) e
+GROUP BY e.user 
+HAVING num=1) u: 330
+```
 
 ### Top 10 amenities
+```sql
+SELECT value, COUNT(*) as num FROM nodes_tags WHERE key="amenity"
+GROUP BY value
+ORDER BY num DESC
+LIMIT 10
+```
 ```sql
 restaurant        852
 place_of_worship  771
@@ -207,6 +231,12 @@ toilets           148
 
 ### Top 5 places of worship
 ```sql
+SELECT nodes_tags.value, COUNT(*) as num FROM nodes_tags
+JOIN (SELECT DISTINCT(id) FROM nodes_tags WHERE value="place_of_worship") i ON nodes_tags.id=i.id
+WHERE nodes_tags.key="religion"
+GROUP BY nodes_tags.value ORDER BY num DESC LIMIT 5
+```
+```sql
 christian  724
 jewish     4
 bahai      3
@@ -216,6 +246,12 @@ unitarian_universalist 3
 
 ### Top 5 cuisines
 ```sql
+SELECT nodes_tags.value, COUNT(*) as num FROM nodes_tags
+JOIN (SELECT DISTINCT(id) FROM nodes_tags WHERE value="restaurant") i
+ON nodes_tags.id=i.id WHERE nodes_tags.key="cuisine"
+GROUP BY nodes_tags.value ORDER BY num DESC LIMIT 5
+```
+```sql
 american 93
 pizza    70
 mexican  41
@@ -224,6 +260,12 @@ seafood  25
 ```
 
 ### Top 10 restaurants
+```sql
+SELECT value, COUNT(*) as num FROM nodes_tags
+JOIN (SELECT DISTINCT(id) FROM nodes_tags WHERE value="restaurant") i
+ON nodes_tags.id=i.id WHERE key="name"
+GROUP BY value ORDER BY num DESC LIMIT 10
+```
 ```sql
 Tijuana Flats      8
 Applebee's         6
