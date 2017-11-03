@@ -1,5 +1,7 @@
 # OpenStreetMap Data Case Study
 
+This is a project for the Udacity Data Analyst Nanodegree.
+
 ### Map Area
 Tampa, FL, United States
 
